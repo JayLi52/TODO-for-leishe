@@ -8,8 +8,9 @@
       </div>
       <div class="btns d-flex flex-start">
 
-        <button class="button" @click="start">Start</button>
-        <button class="button" @click="deleteTask">Remove</button>
+        <el-button type="primary" v-if="task.status === 'To-Do'" class="button" @click="start">Start</el-button>
+        <el-button type="success" v-if="task.status === 'In Progress'" class="button" @click="complete">Complete</el-button>
+        <el-button class="button" @click="deleteTask">Remove</el-button>
       </div>
     </div>
   </div>
@@ -31,6 +32,10 @@ const formattedTimestamp = computed(() =>
 
 const start = () => {
   taskStore.updateTask(props.task.id, { ...props.task, status: 'In Progress' });
+}
+
+const complete = () => {
+  taskStore.updateTask(props.task.id, { ...props.task, status: 'Completed' });
 }
 
 const deleteTask = () => {

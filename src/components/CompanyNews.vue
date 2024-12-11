@@ -1,9 +1,9 @@
 <template>
   <div class="news">
-    <el-image :class='["image", left && "order-1"]' src="" />
-    <div :class='["content", left && "order-2"]'>
+    <el-image :class='["image", left && "order-2"]' src="" />
+    <div :class='["content", left && "order-1"]'>
       <h2>Company News</h2>
-      <p>Stay updated with the latest company announcements.Stay updated with the latest company announcements.Stay updated with the latest company announcements.Stay updated with the latest company announcements.Stay updated with the latest company announcements.Stay updated with the latest company announcements.Stay updated with the latest company announcements.Stay updated with the latest company announcements.</p>
+      <p class="desc">Stay updated with the latest company announcements.Stay updated with the latest company announcements.Stay updated with the latest company announcements.Stay updated with the latest company announcements.Stay updated with the latest company announcements.Stay updated with the latest company announcements.Stay updated with the latest company announcements.Stay updated with the latest company announcements.</p>
     </div>
   </div>
 </template>
@@ -18,13 +18,20 @@ const props = defineProps({
 <style scoped>
 .image {
   width: 50%;
-  height: 20vw;
+  height: 250px;
   margin-right: 20px;
-  order: 2;
 }
 .content {
-  text-align: start;width: 50%;
+  text-align: start;
+  width: 50%;
   order: 1;
+}
+.desc {
+  height: 180px;
+  overflow: hidden; 
+  text-overflow: ellipsis; /* 文字溢出用省略号显示 */
+  display: -webkit-box; /* 启用伸缩盒子模型显示 */
+  -webkit-box-orient: vertical; /* 排列方向为垂直方向 */
 }
 .news {
   margin-top: 20px;
