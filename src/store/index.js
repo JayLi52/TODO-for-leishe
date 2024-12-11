@@ -8,7 +8,7 @@ export const useTaskStore = defineStore("taskStore", {
   actions: {
     async loadTasks() {
       try {
-        const response = await axios.get("http://localhost:3000/tasks");
+        const response = await axios.get("/rest/tasks");
         this.tasks = response.data;
       } catch (error) {
         console.error("Failed to load tasks:", error);
@@ -16,7 +16,7 @@ export const useTaskStore = defineStore("taskStore", {
     },
     async addTask(task) {
       try {
-        const response = await axios.post("http://localhost:3000/tasks", task);
+        const response = await axios.post("/rest/tasks", task);
         this.tasks.push(response.data);
       } catch (error) {
         console.error("Failed to add task:", error);
@@ -24,7 +24,7 @@ export const useTaskStore = defineStore("taskStore", {
     },
     async updateTask(id, updatedTask) {
       try {
-        await axios.put(`http://localhost:3000/tasks/${id}`, updatedTask);
+        await axios.put(`/rest/tasks/${id}`, updatedTask);
         const task = this.tasks.find((t) => t.id === id);
         if (task) {
           task.status = updatedTask.status;
@@ -35,7 +35,7 @@ export const useTaskStore = defineStore("taskStore", {
     },
     async deleteTask(id) {
       try {
-        await axios.delete(`http://localhost:3000/tasks/${id}`);
+        await axios.delete(`/rest/tasks/${id}`);
         this.tasks = this.tasks.filter((task) => task.id !== id);
       } catch (error) {
         console.error("Failed to delete task:", error);

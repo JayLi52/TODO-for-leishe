@@ -1,13 +1,16 @@
 <template>
-  <div class="wrap">
-    <p>{{ task.title }} ({{ formattedTimestamp }})</p>
+  <div class="">
     <div class="wrap-item">
-      <select class="form-select-sm" v-model="task.status" @change="updateTask">
-        <option value="To-Do">To-Do</option>
-        <option value="In Progress">In Progress</option>
-        <option value="Completed">Completed</option>
-      </select>
-      <button class="button" @click="deleteTask">Delete</button>
+      <el-image class="task-image" :src="task.src" />
+      <h3 style="width: 100%;">{{ task.title }}</h3>
+      <div>
+        {{ task.desc }}
+      </div>
+      <div class="btns d-flex flex-start">
+
+        <button class="button" @click="start">Start</button>
+        <button class="button" @click="deleteTask">Remove</button>
+      </div>
     </div>
   </div>
 </template>
@@ -26,9 +29,9 @@ const formattedTimestamp = computed(() =>
   new Date(props.task.timestamp).toLocaleString("en-US", { timeZone: "Asia/Shanghai" })
 );
 
-const updateTask = () => {
-  taskStore.updateTask(props.task.id, { ...props.task, status: props.task.status });
-};
+const start = () => {
+  taskStore.updateTask(props.task.id, { ...props.task, status: 'In Progress' });
+}
 
 const deleteTask = () => {
   taskStore.deleteTask(props.task.id);
@@ -36,16 +39,18 @@ const deleteTask = () => {
 </script>
 
 <style scoped>
-.wrap {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-}
 .button {
   margin-left: 10px;
 }
 .wrap-item {
   display: flex;
+  flex-direction: column;
   min-width: 0;
+  width: 100%;
+  text-align: start;
+}
+
+.task-image {
+  width: 320px;height: 200px;
 }
 </style>
