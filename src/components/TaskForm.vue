@@ -98,7 +98,7 @@ function confirm() {
       status: "To-Do",
       timestamp: new Date().toISOString(),
       desc: taskDescription.value,
-      src: fileList[0]
+      src: uploadedFiles.value[0].name
     };
     taskStore.addTask(task);
   }
