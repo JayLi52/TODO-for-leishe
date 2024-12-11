@@ -3,7 +3,7 @@
     <div class="wrap-item">
       <el-image class="task-image" :src="task.src" />
       <h3 style="width: 100%;">{{ task.title }}</h3>
-      <div>
+      <div style="height: 28%;overflow: hidden; margin-bottom: 10px;">
         {{ task.desc }}
       </div>
       <div class="btns d-flex flex-start">
@@ -53,6 +53,9 @@ const deleteTask = () => {
   min-width: 0;
   width: 100%;
   text-align: start;
+  height: 400px;
+  border: 1px solid #ccc;
+  padding: 10px;
 }
 
 .task-image {

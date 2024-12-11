@@ -18,7 +18,7 @@
         :on-change="handleUploadChange"
         :before-upload="beforeUpload"
       >
-        <el-button type="primary">点击上传图片（对话框内）</el-button>
+        <el-button type="primary">upload image</el-button>
       </el-upload>
       <div style="width: 100%;height: 20px;"></div>
       <el-input
@@ -98,7 +98,7 @@ function confirm() {
       status: "To-Do",
       timestamp: new Date().toISOString(),
       desc: taskDescription.value,
-      src: uploadedFiles.value[0].name
+      src: uploadedFiles.value[0] && uploadedFiles.value[0].name
     };
     taskStore.addTask(task);
   }
